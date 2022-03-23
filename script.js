@@ -1,3 +1,4 @@
+// Returns random weapon from array
 function computerPlay() {
     const weapon = ['Rock', 'Paper', 'Scissors'];
     return weapon[Math.floor(Math.random() * weapon.length)];
@@ -8,7 +9,6 @@ const weaponBtn = playGround.querySelector('.weapon-btn');
 
 weaponBtn.addEventListener('click', (e) => {
     let playerPick = e.target;
-    // let weapon = userPick.dataset.weapon;
     let playerSelection = playerPick.textContent;
     if (checkResult()) {
         checkTheWinner();
@@ -19,7 +19,7 @@ weaponBtn.addEventListener('click', (e) => {
     console.log(playerSelection, computerSelection);
     playRound(playerSelection, computerSelection);
     updateScore();
-    console.log(playerScore, computerScore);
+    updateDisplay();
     if (checkResult()) {
         checkTheWinner();
     }
@@ -28,7 +28,6 @@ weaponBtn.addEventListener('click', (e) => {
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         roundOutcome = 'tie';
-        console.log('It"s a tie');
     }
     else if (
         playerSelection === 'Rock' && computerSelection === 'Scissors' ||
@@ -36,7 +35,6 @@ function playRound(playerSelection, computerSelection) {
         playerSelection === 'Paper' && computerSelection === 'Rock'
     ) {
         roundOutcome = 'win';
-        console.log('You win');
     }
     else if (
         computerSelection === 'Rock' && playerSelection === 'Scissors' ||
@@ -44,7 +42,6 @@ function playRound(playerSelection, computerSelection) {
         computerSelection === 'Paper' && playerSelection === 'Rock'
     ) {
         roundOutcome = 'lose';
-        console.log('You lose');
     }
 
 }
@@ -70,4 +67,12 @@ function checkTheWinner() {
     return playerScore > computerScore
     ? (alert('you won the game'))
     : (alert('you lost the game'));
+}
+
+const playerDisplay = document.querySelector('.player-score')
+const computerDisplay = document.querySelector('.computer-score')
+
+function updateDisplay() {
+    playerDisplay.textContent = `Player: ${playerScore}`;
+    computerDisplay.textContent = `Computer: ${computerScore}`;
 }
