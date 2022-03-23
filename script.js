@@ -6,20 +6,22 @@ function computerPlay() {
 
 const playGround = document.querySelector('.main');
 const weaponBtn = playGround.querySelector('.weapon-btn');
+const outcomeDisplay = document.querySelector('.outcome-display');
 
 weaponBtn.addEventListener('click', (e) => {
     let playerPick = e.target;
     let playerSelection = playerPick.textContent;
+    
     if (checkResult()) {
         checkTheWinner();
         return;
     }
 
     let computerSelection = computerPlay();
-    console.log(playerSelection, computerSelection);
     playRound(playerSelection, computerSelection);
     updateScore();
     updateDisplay();
+
     if (checkResult()) {
         checkTheWinner();
     }
@@ -28,6 +30,7 @@ weaponBtn.addEventListener('click', (e) => {
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         roundOutcome = 'tie';
+        outcomeDisplay.textContent = `It's a tie! ${playerSelection} is equal to ${computerSelection}`;
     }
     else if (
         playerSelection === 'Rock' && computerSelection === 'Scissors' ||
@@ -35,6 +38,7 @@ function playRound(playerSelection, computerSelection) {
         playerSelection === 'Paper' && computerSelection === 'Rock'
     ) {
         roundOutcome = 'win';
+        outcomeDisplay.textContent = `You won! ${playerSelection} beats ${computerSelection}`;
     }
     else if (
         computerSelection === 'Rock' && playerSelection === 'Scissors' ||
@@ -42,8 +46,8 @@ function playRound(playerSelection, computerSelection) {
         computerSelection === 'Paper' && playerSelection === 'Rock'
     ) {
         roundOutcome = 'lose';
+        outcomeDisplay.textContent = `You lost! ${computerSelection} beats ${playerSelection}`;
     }
-
 }
 
 let playerScore = 0;
@@ -65,8 +69,8 @@ function checkResult() {
 
 function checkTheWinner() {
     return playerScore > computerScore
-    ? (alert('you won the game'))
-    : (alert('you lost the game'));
+    ? (window.confirm('You won the game!'))
+    : (window.confirm('You lost the game!'));
 }
 
 const playerDisplay = document.querySelector('.player-score')
