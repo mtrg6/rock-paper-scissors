@@ -7,14 +7,22 @@ const playGround = document.querySelector('.main');
 const weaponBtn = playGround.querySelector('.weapon-btn');
 
 weaponBtn.addEventListener('click', (e) => {
-        let playerPick = e.target;
-        // let weapon = userPick.dataset.weapon;
-        let playerSelection = playerPick.textContent;
+    let playerPick = e.target;
+    // let weapon = userPick.dataset.weapon;
+    let playerSelection = playerPick.textContent;
+    if (checkResult()) {
+        checkTheWinner();
+        return;
+    }
 
-        let computerSelection = computerPlay();
-        console.log(playerSelection, computerSelection);
-        playRound(playerSelection, computerSelection);
-        console.log(playerScore, computerScore);
+    let computerSelection = computerPlay();
+    console.log(playerSelection, computerSelection);
+    playRound(playerSelection, computerSelection);
+    updateScore();
+    console.log(playerScore, computerScore);
+    if (checkResult()) {
+        checkTheWinner();
+    }
 })
 
 function playRound(playerSelection, computerSelection) {
@@ -38,7 +46,7 @@ function playRound(playerSelection, computerSelection) {
         roundOutcome = 'lose';
         console.log('You lose');
     }
-    updateScore();
+
 }
 
 let playerScore = 0;
@@ -52,4 +60,14 @@ function updateScore() {
     else if (roundOutcome === 'lose') {
         computerScore++;
     }
+}
+
+function checkResult() {
+    return playerScore === 5 || computerScore === 5;
+}
+
+function checkTheWinner() {
+    return playerScore > computerScore
+    ? (alert('you won the game'))
+    : (alert('you lost the game'));
 }
