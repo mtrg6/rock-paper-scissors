@@ -1,12 +1,14 @@
-// Returns random weapon from array
-function computerPlay() {
-    const weapon = ['Rock', 'Paper', 'Scissors'];
-    return weapon[Math.floor(Math.random() * weapon.length)];
-}
-
 const playGround = document.querySelector('.main');
 const weaponBtn = playGround.querySelector('.weapon-btn');
 const outcomeDisplay = document.querySelector('.outcome-display');
+const playerDisplay = document.querySelector('.player-score');
+const computerDisplay = document.querySelector('.computer-score');
+const playerWeaponSelection = document.querySelector('.player-weapon');
+const computerWeaponSelection = document.querySelector('.computer-weapon');
+
+let playerScore = 0;
+let computerScore = 0;
+let roundOutcome = '';
 
 weaponBtn.addEventListener('click', (e) => {
     let playerPick = e.target;
@@ -51,9 +53,11 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-let playerScore = 0;
-let computerScore = 0;
-let roundOutcome = '';
+// Returns random weapon from array
+function computerPlay() {
+    const weapon = ['Rock', 'Paper', 'Scissors'];
+    return weapon[Math.floor(Math.random() * weapon.length)];
+}
 
 function updateScore() {
     if (roundOutcome === 'win') {
@@ -64,43 +68,10 @@ function updateScore() {
     }
 }
 
-function checkResult() {
-    return playerScore === 5 || computerScore === 5;
-}
-
-function checkTheWinner(winMsg, lossMsg) {
-    if (playerScore > computerScore) {
-        winMsg = window.confirm('You won the game!');
-    }
-    else {
-        lossMsg = window.confirm('You lost the game!');
-    }
-    playAgain(winMsg, lossMsg);
-}
-
-const playerDisplay = document.querySelector('.player-score')
-const computerDisplay = document.querySelector('.computer-score')
-
 function updateDisplay() {
     playerDisplay.textContent = `Player: ${playerScore}`;
     computerDisplay.textContent = `Computer: ${computerScore}`;
 }
-
-function playAgain(w, l) {
-    if (w === true || l === true) {
-        playerScore = 0;
-        computerScore = 0;
-        roundOutcome = '';
-        playerDisplay.textContent = `Player: ${playerScore}`;
-        computerDisplay.textContent = `Computer: ${computerScore}`;
-        outcomeDisplay.textContent = 'Good Luck!';
-        playerWeaponSelection.textContent = 'X';
-        computerWeaponSelection.textContent = 'X';
-    }
-}
-
-const playerWeaponSelection = document.querySelector('.player-weapon');
-const computerWeaponSelection = document.querySelector('.computer-weapon');
 
 function displayWeaponChoice(playerSelection, computerSelection) {
     switch(playerSelection) {
@@ -125,6 +96,32 @@ function displayWeaponChoice(playerSelection, computerSelection) {
         case 'Scissors':
             computerWeaponSelection.textContent = '✌';
             break;
+    }  
+}
+
+function checkResult() {
+    return playerScore === 5 || computerScore === 5;
+}
+
+function checkTheWinner(winMsg, lossMsg) {
+    if (playerScore > computerScore) {
+        winMsg = window.confirm('You won the game!');
     }
-    
+    else {
+        lossMsg = window.confirm('You lost the game!');
+    }
+    playAgain(winMsg, lossMsg);
+}
+
+function playAgain(w, l) {
+    if (w === true || l === true) {
+        playerScore = 0;
+        computerScore = 0;
+        roundOutcome = '';
+        playerDisplay.textContent = `Player: ${playerScore}`;
+        computerDisplay.textContent = `Computer: ${computerScore}`;
+        outcomeDisplay.textContent = 'Good Luck!';
+        playerWeaponSelection.textContent = 'X';
+        computerWeaponSelection.textContent = 'X';
+    }
 }
