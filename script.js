@@ -21,6 +21,7 @@ weaponBtn.addEventListener('click', (e) => {
     playRound(playerSelection, computerSelection);
     updateScore();
     updateDisplay();
+    displayWeaponChoice(playerSelection, computerSelection);
 
     if (checkResult()) {
         checkTheWinner();
@@ -90,7 +91,40 @@ function playAgain(w, l) {
         playerScore = 0;
         computerScore = 0;
         roundOutcome = '';
-        updateDisplay();
+        playerDisplay.textContent = `Player: ${playerScore}`;
+        computerDisplay.textContent = `Computer: ${computerScore}`;
         outcomeDisplay.textContent = 'Choose your weapon!';
+        playerWeaponSelection.textContent = 'X';
+        computerWeaponSelection.textContent = 'X';
     }
+}
+
+const playerWeaponSelection = document.querySelector('.player-weapon');
+const computerWeaponSelection = document.querySelector('.computer-weapon');
+
+function displayWeaponChoice(playerSelection, computerSelection) {
+    switch(playerSelection) {
+        case 'Rock':
+            playerWeaponSelection.textContent = '✊';
+            break;
+        case 'Paper':
+            playerWeaponSelection.textContent = '✋';
+            break;
+        case 'Scissors':
+            playerWeaponSelection.textContent = '✌';
+            break;
+    }
+
+    switch(computerSelection) {
+        case 'Rock':
+            computerWeaponSelection.textContent = '✊';
+            break;
+        case 'Paper':
+            computerWeaponSelection.textContent = '✋';
+            break;
+        case 'Scissors':
+            computerWeaponSelection.textContent = '✌';
+            break;
+    }
+    
 }
