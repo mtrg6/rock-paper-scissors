@@ -31,7 +31,7 @@ weaponBtn.addEventListener('click', (e) => {
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         roundOutcome = 'tie';
-        outcomeDisplay.textContent = `It's a tie! ${playerSelection} is equal to ${computerSelection}`;
+        outcomeDisplay.textContent = `It's a tie! ${playerSelection} is equal to ${computerSelection}!`;
     }
     else if (
         playerSelection === 'Rock' && computerSelection === 'Scissors' ||
@@ -39,7 +39,7 @@ function playRound(playerSelection, computerSelection) {
         playerSelection === 'Paper' && computerSelection === 'Rock'
     ) {
         roundOutcome = 'win';
-        outcomeDisplay.textContent = `You won! ${playerSelection} beats ${computerSelection}`;
+        outcomeDisplay.textContent = `You won! ${playerSelection} beats ${computerSelection}!`;
     }
     else if (
         computerSelection === 'Rock' && playerSelection === 'Scissors' ||
@@ -47,7 +47,7 @@ function playRound(playerSelection, computerSelection) {
         computerSelection === 'Paper' && playerSelection === 'Rock'
     ) {
         roundOutcome = 'lose';
-        outcomeDisplay.textContent = `You lost! ${computerSelection} beats ${playerSelection}`;
+        outcomeDisplay.textContent = `You lost! ${computerSelection} beats ${playerSelection}!`;
     }
 }
 
@@ -93,7 +93,7 @@ function playAgain(w, l) {
         roundOutcome = '';
         playerDisplay.textContent = `Player: ${playerScore}`;
         computerDisplay.textContent = `Computer: ${computerScore}`;
-        outcomeDisplay.textContent = 'Choose your weapon!';
+        outcomeDisplay.textContent = 'Good Luck!';
         playerWeaponSelection.textContent = 'X';
         computerWeaponSelection.textContent = 'X';
     }

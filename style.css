@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(0, 102, 102);
+    font-family: 'Bebas Neue', cursive;
+}
+
+.header {
+    text-align: center;
+    padding: 30px;
+    font-size: 48px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    padding-top: 70px;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.display {
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-container {
+    display: flex;
+    gap: 40px;
+    padding: 30px;
+}
+
+.btn-container button {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 40px;
+    font-size: 16px;
+    background-color: white;
+    box-shadow: 1px 1px 15px 1px rgb(46, 46, 46);
+}
+
+.player-weapon, .computer-weapon {
+    width: 200px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+    font-size: max(180px, 30px);
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 1px 15px 1px rgb(46, 46, 46);
+}
+
+.score, .wpn-display {
+    display: flex;
+    justify-content: space-around;
+    gap: 100px;
+    padding-top: 30px;
+}
+
+.container {
+    width: 600px;
+}
+
+.outcome-display, .score div {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.outcome-display {
+    padding-top: 20px;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: white;
+    font-size: 24px;
+}
