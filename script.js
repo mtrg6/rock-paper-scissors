@@ -67,14 +67,14 @@ function checkResult() {
     return playerScore === 5 || computerScore === 5;
 }
 
-function checkTheWinner() {
+function checkTheWinner(winMsg, lossMsg) {
     if (playerScore > computerScore) {
-        window.confirm('You won the game!');
+        winMsg = window.confirm('You won the game!');
     }
     else {
-        window.confirm('You lost the game!');
+        lossMsg = window.confirm('You lost the game!');
     }
-    playAgain();
+    playAgain(winMsg, lossMsg);
 }
 
 const playerDisplay = document.querySelector('.player-score')
@@ -85,13 +85,12 @@ function updateDisplay() {
     computerDisplay.textContent = `Computer: ${computerScore}`;
 }
 
-function playAgain() {
-    if (window.confirm) {
+function playAgain(w, l) {
+    if (w === true || l === true) {
         playerScore = 0;
         computerScore = 0;
         roundOutcome = '';
-        playerDisplay.textContent = `Player: ${playerScore}`;
-        computerDisplay.textContent = `Computer: ${computerScore}`;
+        updateDisplay();
         outcomeDisplay.textContent = 'Choose your weapon!';
     }
 }
